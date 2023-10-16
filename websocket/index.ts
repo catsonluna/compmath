@@ -1,4 +1,26 @@
 // turn the code above into a json object
+import { serve } from "bun";
+
+
+Bun.serve({
+    port: 3005,
+
+fetch(req, server) {
+    return new Response(JSON.stringify({ name: 'John Doe' }), {status: 200})
+},
+websocket: {
+    open(socket) {
+    },
+    message(socket, message) {
+        
+    },
+    close(socket) {
+    }
+}
+})
+
+
+
 const levels = {
     level1: [
         "LIMIT(MIN(1) MAX(20))"
