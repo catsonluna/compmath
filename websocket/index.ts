@@ -1,14 +1,14 @@
 // turn the code above into a json object
 const levels = {
     level1: [
-        "LIMIT(MIN(1) MAX(10))"
+        "LIMIT(MIN(1) MAX(20))"
         ,
         "NUM",
         "EQ{+-}",
         "NUM",
     ],
     level2: [
-        "LIMIT(MIN(1) MAX(50))"
+        "LIMIT(MIN(1) MAX(20))"
         ,
         "NUM",
         "EQ{+-}",
@@ -17,7 +17,7 @@ const levels = {
         "NUM",
     ],
     level3: [
-        "LIMIT(MIN(10) MAX(80))"
+        "LIMIT(MIN(10) MAX(40))"
         ,
         "NUM",
         "EQ{+-}",
@@ -28,21 +28,21 @@ const levels = {
         "NUM",
     ],
     level4: [
-        "LIMIT(MIN(2) MAX(10))"
+        "LIMIT(MIN(2) MAX(0))"
         ,
         "NUM",
         "EQ{*}",
         "NUM",
     ],
     level5: [
-        "LIMIT(MIN(1) MAX(10))"
+        "LIMIT(MIN(1) MAX(20))"
         ,
         "NUM",
         "EQ{/}",
         "NUM",
     ],
     level6: [
-        "LIMIT(MIN(4) MAX(20))"
+        "LIMIT(MIN(4) MAX(40))"
         ,
         "NUM",
         "EQ{*}",
@@ -199,16 +199,13 @@ function generateEquation(level: number) {
             let limit = getLimit(element);
             min = parseInt(limit.min);
             max = parseInt(limit.max);
-            console.log(min, max);
         }
         if(element.startsWith("NUM")){
             let num = getRandomInt(min, max);
-            console.log(num);
             equationString += num;
         }
         if(element.startsWith("EQ")){
             let eq = parseEquation(element);
-            console.log(eq);
             equationString += eq;
         }
         if(element.startsWith("(")){
@@ -219,7 +216,13 @@ function generateEquation(level: number) {
         }
     });
     console.log("Equation: " + equationString);
-    console.log("Expected Result: " + eval(equationString).toFixed(2));
+    // if the eval is .00 then only return int 
+    let result = eval(equationString).toFixed(2)
+    if(result.endsWith(".00")){
+        result =  parseInt(result);
+    }
+    console.log("Result: " + result);
+    console.log("\n");
 }
 
 function getLimit(limit: string ) {
