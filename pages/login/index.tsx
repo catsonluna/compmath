@@ -18,7 +18,7 @@ export default function Home() {
       <main className={`${styles.main} ${inter.className}`}>
         <div>
         <h1>
-          Profile
+          Login
         </h1>
         </div>
       </main>
