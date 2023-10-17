@@ -34,4 +34,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-/weboscket-server/node_modules
+/websocket-server/node_modules
