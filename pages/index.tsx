@@ -17,8 +17,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        <Header />
-        <h1>Yupie</h1>
+        <div>
+        <h1>
+          Yupie
+        </h1>
+        </div>
+
       </main>
     </>
   );
