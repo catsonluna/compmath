@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { Inter } from 'next/font/google';
-import Header from './Header';
+import Header from './header';
 // the style
 import styles from '@/styles/Home.module.css';
 // font
@@ -19,9 +19,6 @@ export default function Home() {
       <main className={`${styles.main} ${inter.className}`}>
       <Header />
         <div>
-        <h1>
-          Yupie
-        </h1>
         </div>
 
       </main>
