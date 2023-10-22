@@ -9,7 +9,7 @@ wss.on('connection', (ws: WebSocket) => {
     console.log(data);
     if (data.type == "equation" ){
       let isPossible = false;
-      let equation = generateEquation(data.level);
+      let equation = generateEquation(Math.floor(Math.random() * 15) + 1);
       console.log(equation);
       while(!isPossible){
         // check if the result is a number

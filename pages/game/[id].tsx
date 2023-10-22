@@ -1,6 +1,9 @@
+import { useRouter } from 'next/router';
 import { useEffect, useState} from 'react';
 
 export default function Home() {
+    const router = useRouter();
+    const { id } = router.query;
     const [ws, setWs] = useState<WebSocket>();
     const [loading, setLoading] = useState<boolean>(true);
     const [equation, setEquation] = useState<string>('');
@@ -10,13 +13,19 @@ export default function Home() {
 
   useEffect(() => {
     if (!loading) return;
+    if (id === undefined) return;
     setWs(new WebSocket('ws://localhost:8080'));
-  }, [loading]);
+  }, [loading, id]);
 
     useEffect(() => {
         if (ws === undefined) return;
         ws.onopen = () => {
             console.log('connected');
+            ws.send(JSON.stringify({
+                type: 'join',
+                gameId: id,
+                userId: 'later'
+            }));
             setLoading(false);
         };
         ws.onmessage = (e) => {
@@ -44,7 +53,8 @@ export default function Home() {
         console.log('clicked');
         ws.send(JSON.stringify({
             type: 'equation',
-            level: 15
+            gameId: id,
+            userId: 'later'
         }));
       }
         }>Click me</button>
