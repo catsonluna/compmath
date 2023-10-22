@@ -1,32 +1,54 @@
-import { useEffect } from 'react';
-import WebSocket from 'isomorphic-ws';
+import { useEffect, useState} from 'react';
 
 export default function Home() {
+    const [ws, setWs] = useState<WebSocket>();
+    const [loading, setLoading] = useState<boolean>(true);
+    const [equation, setEquation] = useState<string>('');
+    let data: any;
+
+
+
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:8080');
+    if (!loading) return;
+    setWs(new WebSocket('ws://localhost:8080'));
+  }, [loading]);
 
-    ws.onopen = () => {
-      console.log('connected');
-      ws.send('Hello, this is client!');
-    };
+    useEffect(() => {
+        if (ws === undefined) return;
+        ws.onopen = () => {
+            console.log('connected');
+            setLoading(false);
+        };
+        ws.onmessage = (e) => {
+            console.log(e.data);
+            data = JSON.parse(e.data);
+            console.log(data);
+            if(data.type === 'equation')
+            setEquation(data.equation);
+        };
+        ws.onclose = () => {
+            console.log('disconnected');
+            setLoading(true);
+        };
+    }, [ws]);
 
-    ws.onmessage = (evt: any) => {
-      console.log(evt.data);
-    };
 
-    ws.onerror = (err: any) => {
-      console.error(
-        "Socket encountered error: ",
-        err.message,
-        "Closing socket"
-      );
-      ws.close();
-    };
-  }, []);
+  if (ws === undefined) {
+    return (
+        <></>);
+}
 
   return (
     <div>
-      Check the console for WebSocket messages.
+      <button onClick={() => {
+        console.log('clicked');
+        ws.send(JSON.stringify({
+            type: 'equation',
+            level: 15
+        }));
+      }
+        }>Click me</button>
+        <h1>{equation}</h1>
     </div>
   );
 }
