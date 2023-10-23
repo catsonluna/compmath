@@ -222,6 +222,7 @@ export function generateEquation(level: number) {
     }
     console.log("Result: " + result);
     console.log("\n");
+    return {equationString, result};
 }
 
 function getLimit(limit: string ) {
