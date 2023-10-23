@@ -1,5 +1,6 @@
 import type {NextApiRequest, NextApiResponse } from 'next'
 import { connection} from "@/lib/database";
+import { checkEmail } from '@/lib/utils';
 
 export default async function handler(
     req: NextApiRequest,
@@ -9,6 +10,10 @@ export default async function handler(
    username, email, password     
     }
     =req.body
+
+    if (!checkEmail(email)) {
+        return res.status(400).json({ error: "invalid_email" });
+    }
 
     connection.query(
         "INSERT INTO compmathusers (email, password) VALUES (?, ?)", 

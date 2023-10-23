@@ -5,10 +5,13 @@ import Header from '@/pages/components/header';
 import Display from '../components/leaderboard';
 // the style
 import styles from '@/styles/leaderboard.module.css'
+import { useState } from 'react';
 // font
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+    const [username, setUsername] = useState('')
+
   return (
     <>
       <Head>
