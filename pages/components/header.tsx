@@ -20,6 +20,7 @@ function Header() {
               <li><a href="/login">login</a></li>
               <li><a href="/settings">settings</a></li>
               <li><a href="/leaderboard">leaderboard</a></li>
+              <li><a href="/game">Play a match</a></li>
             </ul>
           </nav>
         </div>
