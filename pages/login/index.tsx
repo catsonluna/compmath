@@ -19,18 +19,20 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
-      <main className={`${styles.main} ${inter.className}`}>
-      <div className={styles['login-container']}>
-                <h2>Login</h2>
-                <form>
-                    <input type="text" placeholder="E-mail" name="email" required onChange={(e)=>setEmail(e.target.value)}value={email}/>
-                    <input type="password" placeholder="Password" name="password" required onChange={(e)=>setPassword(e.target.value)}value={password}/>
-                    <input type="submit" value="Login" />
-                    <input type="submit" value="Register" onClick={(e)=>{router.push("/register")}}/>
-                </form>
-            </div>
-      </main>
+      <div className={`${styles.fixed}`}>
+        <Header />
+        <main className={`${styles.main} ${inter.className}`}>
+        <div className={styles['login-container']}>
+                  <h2>Login</h2>
+                  <form>
+                      <input type="text" placeholder="E-mail" name="email" required onChange={(e)=>setEmail(e.target.value)}value={email}/>
+                      <input type="password" placeholder="Password" name="password" required onChange={(e)=>setPassword(e.target.value)}value={password}/>
+                      <input type="submit" value="Login" />
+                      <input type="submit" value="Register" onClick={(e)=>{router.push("/register")}}/>
+                  </form>
+              </div>
+        </main>
+      </div>
     </>
   )
 }
