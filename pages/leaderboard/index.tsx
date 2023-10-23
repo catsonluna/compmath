@@ -3,10 +3,13 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 // the style
 import styles from '@/styles/Home.module.css'
+import { useState } from 'react'
 // font
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+    const [username, setUsername] = useState('')
+
   return (
     <>
       <Head>
@@ -18,6 +21,7 @@ export default function Home() {
       <main className={`${styles.main} ${inter.className}`}>
         <div>
         <h1>
+            <input onChange={(e) => setUsername(e.target.value)} value={username} />
           leaderboard
         </h1>
         </div>
