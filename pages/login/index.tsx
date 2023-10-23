@@ -4,10 +4,12 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 // the style
 import styles from 'styles/login.module.css'
+import { useRouter } from 'next/router';
 // font
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const router=useRouter()
   const [email,setEmail]=React.useState("")
   const [password,setPassword]=React.useState("")
   return (
@@ -25,7 +27,7 @@ export default function Home() {
                     <input type="text" placeholder="E-mail" name="email" required onChange={(e)=>setEmail(e.target.value)}value={email}/>
                     <input type="password" placeholder="Password" name="password" required onChange={(e)=>setPassword(e.target.value)}value={password}/>
                     <input type="submit" value="Login" />
-                    <input type="submit" value="Register" />
+                    <input type="submit" value="Register" onClick={(e)=>{router.push("/register")}}/>
                 </form>
             </div>
       </main>
