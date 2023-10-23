@@ -1,16 +1,18 @@
 import Head from 'next/head'
+import React from 'react';
+import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import Header from '@/pages/components/header';
+// the style
 import styles from 'styles/login.module.css'
 import { useRouter } from 'next/router';
-import React from 'react';
 // font
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  const router=useRouter()
-  const [email,setEmail]=React.useState("")
-  const [password,setPassword]=React.useState("")
+    const router=useRouter()
+    const [email,setEmail]=React.useState("")
+    const [password,setPassword]=React.useState("")
+    const [password2,setPassword2]=React.useState("")
   return (
     <>
       <Head>
@@ -21,12 +23,13 @@ export default function Home() {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
       <div className={styles['login-container']}>
-                <h2>Login</h2>
+                <h2>Register</h2>
                 <form>
                     <input type="text" placeholder="E-mail" name="email" required onChange={(e)=>setEmail(e.target.value)}value={email}/>
                     <input type="password" placeholder="Password" name="password" required onChange={(e)=>setPassword(e.target.value)}value={password}/>
-                    <input type="submit" value="Login" />
-                    <input type="submit" value="Register" onClick={(e)=>{router.push("/register")}}/>
+                    <input type="password" placeholder="Password" name="password2" required onChange={(e)=>setPassword2(e.target.value)}value={password2}/>
+                    <input type="submit" value="Login" onClick={(e)=>{router.push("/login")}}/>
+                    <input type="submit" value="Register" />
                 </form>
             </div>
       </main>
