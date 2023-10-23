@@ -19,6 +19,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
       <main className={`${styles.main} ${inter.className}`}>
       <div className={styles['login-container']}>
                 <h2>Login</h2>
