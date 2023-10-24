@@ -218,10 +218,8 @@ export function generateEquation(level: number) {
     // if the eval is .00 then only return int 
     let result = eval(equationString).toFixed(2)
     if(result.endsWith(".00")){
-        result =  parseInt(result);
+        result =  parseInt(result).toString();
     }
-    console.log("Result: " + result);
-    console.log("\n");
     return {equationString, result};
 }
 

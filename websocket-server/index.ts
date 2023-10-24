@@ -52,8 +52,9 @@ wss.on('connection', (ws: WebSocket) => {
       // start a timer for 30 seconds in a new thread
       // when the timer is done, send a new equation to all players
        
-      game.players.forEach((player: WebSocket) => {
-        player.send(JSON.stringify({ type: "equation", equation: equation["equationString"] }));
+      game.players.forEach((player: any) => {
+
+        player['ws'].send(JSON.stringify({ type: "equation", equation: equation["equationString"] }));
       });
       console.log(games);
     }
