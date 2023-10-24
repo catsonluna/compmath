@@ -56,9 +56,9 @@ function Display(){
             }
             
             return (
-                <div key={player.username} className={className}>
-                    <h1>{ordinalSuffix(index+1)}. {player.username}</h1>
-                    <p>Elo: {player.elo}</p>
+                <div key={player.username} className={style.row}>
+                    <h1 className={className}>{ordinalSuffix(index+1)}. {player.username}</h1>
+                    <p className={className}>Elo: {player.elo}</p>
                 </div>
             )
         })}
