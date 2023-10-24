@@ -22,7 +22,9 @@ export default function Home() {
           <div>
             <h1>CompMath</h1>
           </div>
-
+          <div>
+            
+          </div>
         </main>
       </div>
     </>
