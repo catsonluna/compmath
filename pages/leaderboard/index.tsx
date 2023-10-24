@@ -20,7 +20,7 @@ export default function Home() {
       <div className={`${styles.fixed}`}>
         <Header />
         <main className={`${styles.main} ${inter.className}`}>
-          <div>
+          <div className={`${styles.size}`}>
           <h1>
             leaderboard
           </h1>
