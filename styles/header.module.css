@@ -3,6 +3,7 @@
     flex-direction: column;
     width: 10vw;
     height: 90vh;
+    text-align: left;
 }
 .change{
     display: flex;

@@ -19,7 +19,7 @@ function Header() {
               <li><a href="/">Home</a></li>
               <li><a href="/login">login</a></li>
               <li><a href="/register">register</a></li>
-              <li><a href="/settings">settings</a></li>
+              <li><a href="/profile">profile</a></li>
               <li><a href="/leaderboard">leaderboard</a></li>
               <li><a href="/game">Play a match</a></li>
             </ul>
