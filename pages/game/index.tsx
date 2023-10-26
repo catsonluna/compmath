@@ -1,14 +1,35 @@
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { Inter } from 'next/font/google';
-import Header from './components/header';
-import { generateEquation } from '@/websocket-server/gen';
+import Header from '@/pages/components/header';
 // the style
 import styles from '@/styles/Home.module.css';
 // font
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const [equation, setEquation] = useState('');
+
+  useEffect(() => {
+    const ws = new WebSocket('ws://localhost:8080');
+
+    ws.onopen = () => {
+      ws.send(JSON.stringify({ type: 'equation' }));
+    };
+
+    ws.onmessage = (message) => {
+      const data = JSON.parse(message.data);
+      if (data.type === 'equation') {
+        setEquation(data.equation);
+      }
+    };
+
+    return () => {
+      ws.close();
+    };
+  }, []);
+
   return (
     <>
       <Head>
@@ -21,7 +42,13 @@ export default function Home() {
         <Header />
         <main className={`${styles.main} ${inter.className}`}>
           <div>
-            <h1>CompMath</h1>
+            <h1>Lobby</h1>
+          </div>
+          <div>
+            <p>{equation}</p>
+            <div className={`${styles.calc}`}>
+              
+            </div>
           </div>
         </main>
       </div>

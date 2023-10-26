@@ -63,3 +63,9 @@
 .profile-button:hover {
     background-color: #005073;
 }
+.fixed{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+  }
