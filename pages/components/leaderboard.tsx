@@ -26,7 +26,7 @@ function Display(){
         setLeaderboard(sortedLeaderboard);
     }, []);
 
-    const ordinalSuffix = (i) => {
+    const ordinalSuffix = (i: number) => {
         let j = i % 10;
         let k = i % 100;
         if (j == 1 && k != 11) {
