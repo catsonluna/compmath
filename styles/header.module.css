@@ -26,11 +26,15 @@
     border: none;
 }
 .displayNone {
-    transform: translateX(-100%);
-    transition: transform 0.3s ease-out;
+    transform: translateX(-400%);
+    transition: transform 3s ease-out;
 }
 
 .displayFlex {
     transform: translateX(0);
-    transition: transform 0.3s ease-in;
+    transition: transform 0.5s ease-in;
 }
+.list {
+    list-style-type: none;
+  }
+  
