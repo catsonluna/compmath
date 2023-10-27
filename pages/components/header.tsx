@@ -15,7 +15,7 @@ function Header() {
         <button id="buttonChange" onClick={toggleDisplay} className={`${style.button}`}><AiOutlineMenu /></button>
         <div id="display" className={display}>
           <nav>
-            <ul>
+            <ul className={style.list}>
               <li><a href="/">Home</a></li>
               <li><a href="/login">login</a></li>
               <li><a href="/register">register</a></li>
