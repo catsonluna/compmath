@@ -3,7 +3,6 @@
   flex-direction: column;
   gap: 30px;
   align-items: center;
-<<<<<<< HEAD
   min-height: 97vh;
   width: 75vw;
   margin-top: 20px;
@@ -16,9 +15,4 @@
 }
 .calc{
   background-color: #50CDE9;
-=======
-  padding: 6rem;
-  min-height: 100vh;
-
->>>>>>> f223ad9 (idk)
 }
