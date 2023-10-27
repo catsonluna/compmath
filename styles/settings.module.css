@@ -14,10 +14,10 @@
     margin: 10px 0;
 }
 
-/* label {
+ /* label {
     display: block;
     font-weight: bold;
-  }
+  } */
   
   .inputField {
     width: 100%;
@@ -51,10 +51,10 @@
     font-size: 1rem;
     margin-top: 10px;
 }
-
+/* 
 button:hover {
     background-color: #005073;
-} */
+}  */
 .fixed{
     display: flex;
     flex-direction: row;

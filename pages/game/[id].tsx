@@ -62,14 +62,14 @@ export default function Home() {
           }));
         }
           }>Click me</button>
-          <h1>{equation}</h1>
+          
         </div>
         <div className={`${styles.main}`}>{/*main*/}
           <div className={`${styles.time}`}>{/*time*/}
             <p>15 sec</p>
           </div>
-          <div>
-            
+          <div className={`${styles.eq}`}>{/*equations*/}
+            <h1>{equation}</h1>
           </div>
           <div className={`${styles.calcs}`}>{/*calcs*/}
               <div className={`${styles.boxing}`}>
