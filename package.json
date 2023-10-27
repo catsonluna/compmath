@@ -14,7 +14,9 @@
     "mysql2": "^3.6.2",
     "next": "^13.5.4",
     "react": "^18",
+    "react-animated-heart": "^0.0.8",
     "react-dom": "^18.2.0",
+    "react-heart": "^1.0.6",
     "react-icons": "^4.11.0",
     "react-use-websocket": "^4.5.0",
     "styled-components": "^6.1.0"
