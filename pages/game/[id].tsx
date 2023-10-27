@@ -1,5 +1,8 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState} from 'react';
+import styles from '@/styles/game.module.css';
+import Heart from '@/pages/components/heart';
+
 
 export default function Home() {
     const router = useRouter();
@@ -48,17 +51,83 @@ export default function Home() {
 }
 
   return (
-    <div>
-      <button onClick={() => {
-        console.log('clicked');
-        ws.send(JSON.stringify({
-            type: 'equation',
-            gameId: id,
-            userId: 'later'
-        }));
-      }
-        }>Click me</button>
-        <h1>{equation}</h1>
+    <div className={`${styles.main}`}>
+      <div>
+        <button onClick={() => {
+          console.log('clicked');
+          ws.send(JSON.stringify({
+              type: 'equation',
+              gameId: id,
+              userId: 'later'
+          }));
+        }
+          }>Click me</button>
+          <h1>{equation}</h1>
+        </div>
+        <div className={`${styles.main}`}>{/*main*/}
+          <div className={`${styles.time}`}>{/*time*/}
+            <p>15 sec</p>
+          </div>
+          <div>
+            
+          </div>
+          <div className={`${styles.calcs}`}>{/*calcs*/}
+              <div className={`${styles.boxing}`}>
+                <div className={`${styles.calc1}`}>{/*calc1*/}
+                  <div className={`${styles.res}`}>
+                    <input type="number" className={`${styles.in}`} placeholder="0"/>
+                  </div>
+                  <div className={`${styles.align}`}>
+                    <button className={`${styles.button}`} value={7}>7</button>
+                    <button className={`${styles.button}`} value={8}>8</button>
+                    <button className={`${styles.button}`} value={9}>9</button>
+                  </div>
+                  <div className={`${styles.align}`}>
+                    <button className={`${styles.button}`} value={4}>4</button>
+                    <button className={`${styles.button}`} value={5}>5</button>
+                    <button className={`${styles.button}`} value={6}>6</button>
+                  </div>
+                  <div className={`${styles.align}`}>
+                    <button className={`${styles.button}`} value={1}>1</button>
+                    <button className={`${styles.button}`} value={2}>2</button>
+                    <button className={`${styles.button}`} value={3}>3</button>
+                  </div>
+                  <div className={`${styles.align}`}>
+                    <button className={`${styles.button}`} value={0}>0</button>
+                  </div>
+                </div>
+                <div>
+                  <Heart num={7} />
+                </div>
+              </div>
+              <div className={`${styles.boxing}`}>
+                <Heart num={7} />
+                <div className={`${styles.calc2}`}>{/*calc2*/}
+                  <div className={`${styles.res}`}>
+                    <input type="number" className={`${styles.in}`} placeholder="0"/>
+                  </div>
+                  <div className={`${styles.align}`}>
+                    <button className={`${styles.button}`} value={7}>7</button>
+                    <button className={`${styles.button}`} value={8}>8</button>
+                    <button className={`${styles.button}`} value={9}>9</button>
+                  </div>
+                  <div className={`${styles.align}`}>
+                    <button className={`${styles.button}`} value={4}>4</button>
+                    <button className={`${styles.button}`} value={5}>5</button>
+                    <button className={`${styles.button}`} value={6}>6</button>
+                  </div>
+                  <div className={`${styles.align}`}>
+                    <button className={`${styles.button}`} value={1}>1</button>
+                    <button className={`${styles.button}`} value={2}>2</button>
+                    <button className={`${styles.button}`} value={3}>3</button>
+                  </div>
+                  <div className={`${styles.align}`}>
+                    <button className={`${styles.button}`} value={0}>0</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
     </div>
   );
 }
