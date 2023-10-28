@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Inter } from 'next/font/google';
 import Header from '@/pages/components/header';
 // the style
-import styles from '@/styles/Home.module.css';
+import styles from '@/styles/gam.module.css';
 // font
 const inter = Inter({ subsets: ['latin'] })
 
@@ -44,11 +44,33 @@ export default function Home() {
           <div>
             <h1>Lobby</h1>
           </div>
-          <div>
-            <p>{equation}</p>
-            <div className={`${styles.calc}`}>
-              
-            </div>
+          <div className={`${styles.cen}`}>
+            <p className={`${styles.p}`}>{equation}</p>
+              <div className={`${styles.boxing}`}>
+                <div className={`${styles.calc1}`}>{/*calc1*/}
+                  <div className={`${styles.res}`}>
+                    <input type="text" className={`${styles.in}`} placeholder="0"/>
+                  </div>
+                  <div className={`${styles.align}`}>
+                    <button className={`${styles.button}`} value={7}>7</button>
+                    <button className={`${styles.button}`} value={8}>8</button>
+                    <button className={`${styles.button}`} value={9}>9</button>
+                  </div>
+                  <div className={`${styles.align}`}>
+                    <button className={`${styles.button}`} value={4}>4</button>
+                    <button className={`${styles.button}`} value={5}>5</button>
+                    <button className={`${styles.button}`} value={6}>6</button>
+                  </div>
+                  <div className={`${styles.align}`}>
+                    <button className={`${styles.button}`} value={1}>1</button>
+                    <button className={`${styles.button}`} value={2}>2</button>
+                    <button className={`${styles.button}`} value={3}>3</button>
+                  </div>
+                  <div className={`${styles.align}`}>
+                    <button className={`${styles.button}`} value={0}>0</button>
+                  </div>
+                </div>
+              </div>
           </div>
         </main>
       </div>

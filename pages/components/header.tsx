@@ -16,12 +16,12 @@ function Header() {
         <div id="display" className={display}>
           <nav>
             <ul className={style.list}>
-              <li><a href="/">Home</a></li>
-              <li><a href="/login">login</a></li>
-              <li><a href="/register">register</a></li>
-              <li><a href="/profile">profile</a></li>
-              <li><a href="/leaderboard">leaderboard</a></li>
-              <li><a href="/game">Play a match</a></li>
+              <li><a className={`${style.res}`} href="/">Home</a></li>
+              <li><a className={`${style.res}`} href="/login">login</a></li>
+              <li><a className={`${style.res}`} href="/register">register</a></li>
+              <li><a className={`${style.res}`} href="/profile">profile</a></li>
+              <li><a className={`${style.res}`} href="/leaderboard">leaderboard</a></li>
+              <li><a className={`${style.res}`} href="/game">Play a match</a></li>
             </ul>
           </nav>
         </div>
