@@ -9,6 +9,9 @@ import styles from '@/styles/Home.module.css';
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  // Add your image URL here
+  const imgUrl = "https://www.freeiconspng.com/thumbs/calculator-icon/calculator-icon-17.png";
+
   return (
     <>
       <Head>
@@ -22,6 +25,18 @@ export default function Home() {
         <main className={`${styles.main} ${inter.className}`}>
           <div>
             <h1>CompMath</h1>
+          </div>
+          <div className={`${styles.holding}`}>
+            <div className={`${styles.text}`}>{/*teksta div*/}
+              <h1>Are you a math psycho?</h1>
+              <h1>Try out our game and see!</h1>
+              <h3 className={`${styles.h3}`}>Game for real nerds and for those who hate nerds!</h3>
+              <a className={`${styles.res}`} href="/login">Join</a>
+            </div>
+            <div className={`${styles.text}`}>{/*img div*/}
+              {/* Add the Image component here */}
+              <Image src={imgUrl} alt="Your description" width={500} height={500} />
+            </div>
           </div>
         </main>
       </div>

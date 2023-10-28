@@ -14,7 +14,7 @@
 .button{
     display: flex;
     width: 18%;
-    height: 8%;
+    height: 5%;
     word-break: break-all;
     background: none;
     margin: 0;
@@ -24,6 +24,19 @@
     font-weight: bold;
     font-size: xx-large;
     border: none;
+    transition: background-color 0.5s ease; 
+}
+
+.button:hover{
+    color: black; 
+}
+.res{
+    background: none;
+    border: none;
+    transition: background-color 0.5s ease; 
+}
+.res:hover{
+    color: black; 
 }
 .displayNone {
     transform: translateX(-400%);
