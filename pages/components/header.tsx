@@ -12,13 +12,15 @@ function Header() {
   return (
     <header className={`${style.header}`}>
       <div id="change" className={`${style.change}`}>
-        <button id="buttonChange" onClick={toggleDisplay} className={`${style.button}`}><AiOutlineMenu /></button>
+      <button id="buttonChange" onClick={toggleDisplay} className={`${style.button}`}>
+          <div className={style.iconWrapper}>
+            <AiOutlineMenu />
+          </div>
+          </button>
         <div id="display" className={display}>
           <nav>
             <ul className={style.list}>
               <li><a className={`${style.res}`} href="/">Home</a></li>
-              <li><a className={`${style.res}`} href="/login">login</a></li>
-              <li><a className={`${style.res}`} href="/register">register</a></li>
               <li><a className={`${style.res}`} href="/profile">profile</a></li>
               <li><a className={`${style.res}`} href="/leaderboard">leaderboard</a></li>
               <li><a className={`${style.res}`} href="/game">Play a match</a></li>

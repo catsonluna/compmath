@@ -36,7 +36,7 @@
     transition: background-color 0.5s ease; 
 }
 .res:hover{
-    color: black; 
+    color: #FAE206; 
 }
 .displayNone {
     transform: translateX(-400%);
@@ -50,4 +50,11 @@
 .list {
     list-style-type: none;
   }
-  
+@media only screen and (max-width: 767px){
+    .iconWrapper{
+        font-size: medium;
+    }
+    .button:hover{
+        color: white; 
+    }
+}

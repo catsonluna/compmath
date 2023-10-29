@@ -28,14 +28,14 @@ export default function Home() {
           </div>
           <div className={`${styles.holding}`}>
             <div className={`${styles.text}`}>{/*teksta div*/}
-              <h1>Are you a math psycho?</h1>
-              <h1>Try out our game and see!</h1>
+              <h1 className={`${styles.h1}`}>Are you a math psycho?</h1>
+              <h1 className={`${styles.h1}`}>Try out our game and see!</h1>
               <h3 className={`${styles.h3}`}>Game for real nerds and for those who hate nerds!</h3>
               <a className={`${styles.res}`} href="/login">Join</a>
             </div>
-            <div className={`${styles.text}`}>{/*img div*/}
+            <div className={`${styles.img}`}>{/*img div*/}
               {/* Add the Image component here */}
-              <Image src={imgUrl} alt="Your description" width={500} height={500} />
+              <Image src={imgUrl} alt="Your description" layout="fill" objectFit="contain" />
             </div>
           </div>
         </main>

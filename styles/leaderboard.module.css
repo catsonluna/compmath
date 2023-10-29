@@ -45,3 +45,13 @@
   align-items: center;
   justify-content: center;
 }
+@media only screen and (max-width: 767px){
+  .row{
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+  }
+  .size{
+    width: 70%;
+  }
+}
