@@ -3,7 +3,6 @@ import { useEffect, useState} from 'react';
 import styles from '@/styles/game.module.css';
 import Heart from '@/pages/components/heart';
 
-
 export default function Home() {
     const router = useRouter();
     const { id } = router.query;
@@ -12,13 +11,13 @@ export default function Home() {
     const [equation, setEquation] = useState<string>('');
     let data: any;
 
+    const [counter, setCounter] = useState(15);
 
-
-  useEffect(() => {
-    if (!loading) return;
-    if (id === undefined) return;
-    setWs(new WebSocket('ws://localhost:8080'));
-  }, [loading, id]);
+    useEffect(() => {
+        if (!loading) return;
+        if (id === undefined) return;
+        setWs(new WebSocket('ws://localhost:8080'));
+    }, [loading, id]);
 
     useEffect(() => {
         if (ws === undefined) return;
@@ -30,13 +29,17 @@ export default function Home() {
                 userId: 'later'
             }));
             setLoading(false);
+            const timer = setInterval(() => {
+                setCounter((currentCounter) => currentCounter > 0 ? currentCounter - 1 : 0);
+            }, 1000);
+            return () => clearInterval(timer);
         };
         ws.onmessage = (e) => {
             console.log(e.data);
             data = JSON.parse(e.data);
             console.log(data);
             if(data.type === 'equation')
-            setEquation(data.equation);
+                setEquation(data.equation);
         };
         ws.onclose = () => {
             console.log('disconnected');
@@ -44,33 +47,29 @@ export default function Home() {
         };
     }, [ws]);
 
+    if (ws === undefined) {
+        return <></>;
+    }
 
-  if (ws === undefined) {
     return (
-        <></>);
-}
-
-  return (
-    <div className={`${styles.main}`}>
-      <div>
-        <button onClick={() => {
-          console.log('clicked');
-          ws.send(JSON.stringify({
-              type: 'equation',
-              gameId: id,
-              userId: 'later'
-          }));
-        }
-          }>Click me</button>
-          
-        </div>
-        <div className={`${styles.main}`}>{/*main*/}
-          <div className={`${styles.time}`}>{/*time*/}
-            <p>15 sec</p>
-          </div>
-          <div className={`${styles.eq}`}>{/*equations*/}
-            <h1>{equation}</h1>
-          </div>
+        <div className={`${styles.main}`}>
+            <div>
+                <button onClick={() => {
+                    console.log('clicked');
+                    ws.send(JSON.stringify({
+                        type: 'equation',
+                        gameId: id,
+                        userId: 'later'
+                    }));
+                }}>Click me</button>
+            </div>
+            <div className={`${styles.main}`}>{/*main*/}
+                <div id="time" className={`${styles.time}`}>{/*time*/}
+                    <p className={`${styles.timer}`}>{counter} sec</p>
+                </div>
+                <div className={`${styles.eq}`}>{/*equations*/}
+                    <h1>{equation}</h1>
+                </div>
           <div className={`${styles.calcs}`}>{/*calcs*/}
               <div className={`${styles.boxing}`}>
                 <div className={`${styles.calc1}`}>{/*calc1*/}
