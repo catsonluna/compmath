@@ -16,8 +16,8 @@ export default async function handler(
     }
 
     connection.query(
-        "INSERT INTO compmathusers (email, password) VALUES (?, ?)", 
-        [email, password],
+        "INSERT INTO compmathusers (username, email, password) VALUES (?, ?, ?)", 
+        [username, email, password],
         function (error, results, fields) {
             if (error) return res.status(500).json({ error });
             return res.status(200).json(results);
