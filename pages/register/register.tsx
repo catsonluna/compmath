@@ -24,7 +24,7 @@ const Signup = () => {
     // For password hashing, you may want to use a library like bcrypt.js.
 
     // For example, you can send the data to your API route for registration:
-    const response = await fetch('/api/signup', {
+    const response = await fetch('/api/auth/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
