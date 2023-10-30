@@ -5,13 +5,15 @@ import Header from './components/header';
 import { generateEquation } from '@/websocket-server/gen';
 // the style
 import styles from '@/styles/Home.module.css';
+import { useRouter } from 'next/router';
+import { isLoggedIn } from './components/profile';
 // font
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   // Add your image URL here
   const imgUrl = "https://www.freeiconspng.com/thumbs/calculator-icon/calculator-icon-17.png";
-
+  const router = useRouter();
   return (
     <>
       <Head>
@@ -31,7 +33,13 @@ export default function Home() {
               <h1 className={`${styles.h1}`}>Are you a math psycho?</h1>
               <h1 className={`${styles.h1}`}>Try out our game and see!</h1>
               <h3 className={`${styles.h3}`}>Game for real nerds and for those who hate nerds!</h3>
-              <a className={`${styles.res}`} href="/login">Join</a>
+              <a className={`${styles.res}`} onClick={() => {
+                if(isLoggedIn()){
+                  router.push("/game")
+                }else{
+                  router.push("/login")
+                }
+              }}>Join</a>
             </div>
             <div className={`${styles.img}`}>{/*img div*/}
               {/* Add the Image component here */}

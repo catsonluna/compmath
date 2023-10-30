@@ -13,7 +13,7 @@ export default function handler(
 ) {
     connection.query(
         `
-        SELECT username, elo FROM users ORDER BY elo LIMIT 10;
+        SELECT username, elo FROM users ORDER BY elo desc LIMIT 10;
         `,
         function (error, results, fields) {
             if (error) return res.status(500).json({ error });
