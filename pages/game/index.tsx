@@ -30,7 +30,7 @@ const inter = Inter({ subsets: ['latin'] })
         <Header />
         <main className={`${styles.main} ${inter.className}`}>
           <div>
-            <h1>Lobby</h1>
+            <h1 className={`${styles.nah}`}>Lobby</h1>
           </div>
           <div className={`${styles.cen}`}>
             <p className={`${styles.p}`}>{equation}</p>
