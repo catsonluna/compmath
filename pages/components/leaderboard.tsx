@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import style from '@/styles/leaderboard.module.css';
+import axios from 'axios';
 
 function Display() {
     const [leaderboard, setLeaderboard] = useState([
@@ -7,47 +8,16 @@ function Display() {
         {
             username: "raivo",
             elo: 123,
-        },
-        {
-            username: "davis",
-            elo: 323,
-        },
-        {
-            username: "as",
-            elo: 37,
-        },
-        {
-            username: "avi",
-            elo: 3734,
-        },
-        {
-            username: "avs",
-            elo: 33,
-        },
-        {
-            username: "a1evis",
-            elo: 3731,
-        },
-        {
-            username: "aves",
-            elo: 3,
-        },
-        {
-            username: "avies",
-            elo: 3173,
-        },
-        {
-            username: "aviwes",
-            elo: 3113,
-        },
-        {
-            username: "avwes",
-            elo: 3073,
         }
 
     ]);
 
     useEffect(() => {
+            axios.get("/api/leaderboard").then((res)=>{
+              console.log(res.data)
+                setLeaderboard(res.data.results)
+            })
+      
         // Ensure that Elo scores are parsed as numbers for correct sorting.
         const sortedLeaderboard = [...leaderboard].sort((a, b) => {
             return b.elo - a.elo;
