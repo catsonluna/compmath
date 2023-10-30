@@ -3,28 +3,24 @@ import style from '@/styles/leaderboard.module.css';
 import axios from 'axios';
 
 function Display() {
+    // Initialize the 'leaderboard' state variable with some initial player data.
     const [leaderboard, setLeaderboard] = useState([
-        // ...your player data...
         {
             username: "raivo",
             elo: 123,
         }
-
     ]);
 
+    // Use the 'useEffect' hook to fetch data from an API when the component mounts.
     useEffect(() => {
-            axios.get("/api/leaderboard").then((res)=>{
-              console.log(res.data)
-                setLeaderboard(res.data.results)
-            })
-      
-        // Ensure that Elo scores are parsed as numbers for correct sorting.
-        const sortedLeaderboard = [...leaderboard].sort((a, b) => {
-            return b.elo - a.elo;
+        axios.get("/api/leaderboard").then((res) => {
+            console.log(res.data); // Log the API response data.
+            // Update the 'leaderboard' state with the fetched data.
+            setLeaderboard(res.data.results);
         });
-        setLeaderboard(sortedLeaderboard.slice(0, 10)); // Display only the top ten players.
-    }, []);
+    }, []); // The empty array [] means this effect runs only once when the component mounts.
 
+    // Function to add a suffix to numbers (1st, 2nd, 3rd, 4th, ...).
     const ordinalSuffix = (i) => {
         let j = i % 10;
         let k = i % 100;
@@ -43,8 +39,12 @@ function Display() {
     return (
         <div className={style.leaderboard}>
             <h2>Top Ten Players</h2>
+
+            {/* Map through the 'leaderboard' array and display player information. */}
             {leaderboard.map((player, index) => {
                 let className;
+
+                // Determine the CSS class for styling based on the player's rank.
                 if (index === 0) {
                     className = style.first;
                 } else if (index === 1) {
@@ -54,6 +54,7 @@ function Display() {
                 } else {
                     className = style.rest;
                 }
+
                 return (
                     <div key={player.username} className={`${style.row} ${className}`}>
                         <h1>{ordinalSuffix(index + 1)}. {player.username}</h1>
