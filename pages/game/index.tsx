@@ -5,30 +5,18 @@ import { Inter } from 'next/font/google';
 import Header from '@/pages/components/header';
 // the style
 import styles from '@/styles/gam.module.css';
+import { generateEquation } from '@/websocket-server/gen';
 // font
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
-  const [equation, setEquation] = useState('');
-
-  useEffect(() => {
-    const ws = new WebSocket('ws://localhost:8080');
-
-    ws.onopen = () => {
-      ws.send(JSON.stringify({ type: 'equation' }));
-    };
-
-    ws.onmessage = (message) => {
-      const data = JSON.parse(message.data);
-      if (data.type === 'equation') {
-        setEquation(data.equation);
-      }
-    };
-
-    return () => {
-      ws.close();
-    };
-  }, []);
+  export default function Home() {
+    const [equation, setEquation] = useState('');
+  
+    useEffect(() => {
+      // Generate an equation when the component mounts
+      const newEquation = generateEquation(1); // Replace 1 with the desired level
+      setEquation(newEquation.equationString);
+    }, []);
 
   return (
     <>

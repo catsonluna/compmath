@@ -48,18 +48,21 @@
 .leaderboard{
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 100%;
   gap: 5px;
   align-items: center;
   justify-content: center;
 }
 @media only screen and (max-width: 767px){
+  .main{
+    width: 80%;
+  }
   .row{
     flex-direction: column;
     gap: 5px;
     align-items: center;
   }
   .size{
-    width: 70%;
+    width: 100%;
   }
 }
