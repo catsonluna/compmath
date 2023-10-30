@@ -25,7 +25,7 @@ export default function Home() {
         <main className={`${styles.main} ${inter.className}`}>
           <div className={`${styles.size}`}>
           <h1>
-            leaderboard
+            Leaderboard
           </h1>
             <Display />
           </div>
