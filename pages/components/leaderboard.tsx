@@ -41,7 +41,7 @@ function Display() {
             elo: 3113,
         },
         {
-            username: "avwes",
+            username: "ass",
             elo: 3073,
         }
 
