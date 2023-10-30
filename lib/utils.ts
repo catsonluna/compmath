@@ -14,3 +14,13 @@ export function checkEmail(email: string) {
 export function preventSqlInjection(str: any) {
     return str.replace(/'/g, "''");
 }
+
+export function generateSecret(len: number) {
+    const charset =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let secret = "";
+    for (let i = 0; i < len; i++) {
+        secret += charset.charAt(Math.floor(Math.random() * charset.length));
+    }
+    return secret;
+}

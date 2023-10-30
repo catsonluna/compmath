@@ -96,10 +96,12 @@ export default function Home() {
                   </div>
                 </div>
                 <div>
+                  <p className={`${styles.titl}`}>Me:</p>
                   <Heart num={7} />
                 </div>
               </div>
-              <div className={`${styles.boxing}`}>
+              <div className={`${styles.boxing1}`}>
+                <p className={`${styles.titl}`}>Enemy:</p>
                 <Heart num={7} />
                 <div className={`${styles.calc2}`}>{/*calc2*/}
                   <div className={`${styles.res}`}>
