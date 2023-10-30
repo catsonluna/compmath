@@ -6,6 +6,8 @@ import Header from '@/pages/components/header'
 // the style
 import styles from 'styles/login.module.css'
 import { useRouter } from 'next/router';
+import axios from 'axios';
+import { setCookie } from 'cookies-next';
 // font
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,12 +29,31 @@ export default function Home() {
         <main className={`${styles.main} ${inter.className}`}>
         <div className={styles['login-container']}>
                   <h2>Register</h2>
-                  <form>
+                  <form onSubmit={
+                    (e)=>{
+                      e.preventDefault()
+                      // check if its login or register
+                      if(e.type == "login") {
+                        return
+                      }
+                      axios.post("/api/auth/register",{
+                        username:username,
+                        email:email,
+                        password:password
+                      }).then((res)=>{
+                        console.log(res.data)
+                        setCookie("session_token",res.data.session_secret)
+                        // redirect to main page
+                        router.push("/")
+                      }).catch((err)=>{console.log(err.response.data)}
+                      )
+                    }
+                  }>
                   <input type="text" placeholder="Username" name="username" required onChange={(e)=>setUsername(e.target.value)}value={username}/>
                       <input type="text" placeholder="E-mail" name="email" required onChange={(e)=>setEmail(e.target.value)}value={email}/>
                       <input type="password" placeholder="Password" name="password" required onChange={(e)=>setPassword(e.target.value)}value={password}/>
-                      <input type="submit" value="Login" onClick={(e)=>{router.push("/login")}}/>
                       <input type="submit" value="Register" />
+                      <input type="submit" value="Login" onClick={(e)=>{router.push("/login")}}/>
                   </form>
               </div>
         </main>

@@ -30,8 +30,8 @@ export default async function handler(
                 const salt = generateSecret(8);
                 const hashedPass = createHash('sha256').update(salt + password).digest('hex');
                 connection.query(
-                    "INSERT INTO users (user_id, username, email, password) VALUES (?, ?, ?, ?)",
-                    [userid, username, email, hashedPass],
+                    "INSERT INTO users (user_id, username, email, password, salt) VALUES (?, ?, ?, ?, ?)",
+                    [userid, username, email, hashedPass, salt],
                     function (error, results, fields) {
                         if (error) return res.status(500).json({ error });                        
                         // create a session
@@ -39,11 +39,14 @@ export default async function handler(
                         const sessionSecret = generateSecret(128);
                         const secretHash = createHash('sha256').update(sessionSecret).digest('hex');
                         connection.query(
-                            "INSERT INTO sessions (session_id, user_id, secret_hash) VALUES (?, ?, ?)",
-                            [sessionID, username, secretHash],
+                            "INSERT INTO sessions (session_id, user_id, hash) VALUES (?, ?, ?)",
+                            [sessionID, userid, secretHash],
                             function (error, results, fields) {
                                 if (error) return res.status(500).json({ error });
-                                res.status(200).json({ sessionID, sessionSecret });
+                                res.status(200).json({ 
+                                    session_id: sessionID,
+                                    session_secret: sessionSecret
+                                });
                             }
                         );
                         
