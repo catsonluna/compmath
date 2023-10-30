@@ -11,7 +11,7 @@ export default function Home() {
     const [equation, setEquation] = useState<string>('');
     let data: any;
 
-    const [counter, setCounter] = useState(30);
+    const [counter, setCounter] = useState(15);
 
     useEffect(() => {
         if (!loading) return;

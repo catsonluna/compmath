@@ -4,6 +4,8 @@ import Header from '@/pages/components/header';
 import styles from 'styles/login.module.css'
 import { useRouter } from 'next/router';
 import React from 'react';
+import axios from 'axios';
+import { setCookie } from 'cookies-next';
 // font
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,7 +26,18 @@ export default function Home() {
         <main className={`${styles.main} ${inter.className}`}>
         <div className={styles['login-container']}>
                   <h2>Login</h2>
-                  <form>
+                  <form onSubmit={(e) => {
+                    e.preventDefault()
+
+                    axios.post("/api/auth/login",{
+                        email:email,
+                        password:password
+                        }).then((res)=>{
+                        console.log(res.data)
+                        router.push("/")
+                        }).catch((err)=>{console.log(err.response.data)}
+                        )
+                  }}>
                       <input type="text" placeholder="E-mail" name="email" required onChange={(e)=>setEmail(e.target.value)}value={email}/>
                       <input type="password" placeholder="Password" name="password" required onChange={(e)=>setPassword(e.target.value)}value={password}/>
                       <input type="submit" value="Login" />
