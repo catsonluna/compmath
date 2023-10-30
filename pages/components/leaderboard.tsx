@@ -7,42 +7,6 @@ function Display() {
         {
             username: "raivo",
             elo: 123,
-        },
-        {
-            username: "davis",
-            elo: 323,
-        },
-        {
-            username: "as",
-            elo: 37,
-        },
-        {
-            username: "avi",
-            elo: 3734,
-        },
-        {
-            username: "avs",
-            elo: 33,
-        },
-        {
-            username: "a1evis",
-            elo: 3731,
-        },
-        {
-            username: "aves",
-            elo: 3,
-        },
-        {
-            username: "avies",
-            elo: 3173,
-        },
-        {
-            username: "aviwes",
-            elo: 3113,
-        },
-        {
-            username: "ass",
-            elo: 3073,
         }
 
     ]);
