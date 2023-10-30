@@ -10,14 +10,15 @@ import Calc from '@/pages/components/calc';
 // font
 const inter = Inter({ subsets: ['latin'] })
 
-  export default function Home() {
-    const [equation, setEquation] = useState('');
-  
-    useEffect(() => {
-      // Generate an equation when the component mounts
-      const newEquation = generateEquation(1); // Replace 1 with the desired level
-      setEquation(newEquation.equationString);
-    }, []);
+export default function Home() {
+  const [equation, setEquation] = useState('');
+  const [inputValue, setInputValue] = useState(''); // Add this line
+
+  useEffect(() => {
+    // Generate an equation when the component mounts
+    const newEquation = generateEquation(1); // Replace 1 with the desired level
+    setEquation(newEquation.equationString);
+  }, []);
 
   return (
     <>
@@ -38,9 +39,10 @@ const inter = Inter({ subsets: ['latin'] })
               <div className={`${styles.boxing}`}>
                 <div className={`${styles.calc1}`}>{/*calc1*/}
                   <div className={`${styles.res}`}>
-                    <input type="number" className={`${styles.in}`} placeholder="0"/>
+                    <input type="text" className={`${styles.res}`} value={inputValue} readOnly />
                   </div>
-                    <Calc />
+                    {/* Pass setInputValue as a prop to Calc */}
+                    <Calc setInputValue={setInputValue} />
                 </div>
               </div>
           </div>

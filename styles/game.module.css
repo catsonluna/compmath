@@ -84,6 +84,11 @@
     height: 40%;
     align-items: center;
     justify-content: center;
+    color: black;
+    font-weight: bold;
+    font-size: large;
+    text-align: center;
+    border: none;
 }
 .titl{
     display: none;
