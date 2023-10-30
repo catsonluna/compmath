@@ -6,6 +6,7 @@ import Header from '@/pages/components/header';
 // the style
 import styles from '@/styles/gam.module.css';
 import { generateEquation } from '@/websocket-server/gen';
+import Calc from '@/pages/components/calc';
 // font
 const inter = Inter({ subsets: ['latin'] })
 
@@ -39,24 +40,7 @@ const inter = Inter({ subsets: ['latin'] })
                   <div className={`${styles.res}`}>
                     <input type="number" className={`${styles.in}`} placeholder="0"/>
                   </div>
-                  <div className={`${styles.align}`}>
-                    <button className={`${styles.button}`} value={7}>7</button>
-                    <button className={`${styles.button}`} value={8}>8</button>
-                    <button className={`${styles.button}`} value={9}>9</button>
-                  </div>
-                  <div className={`${styles.align}`}>
-                    <button className={`${styles.button}`} value={4}>4</button>
-                    <button className={`${styles.button}`} value={5}>5</button>
-                    <button className={`${styles.button}`} value={6}>6</button>
-                  </div>
-                  <div className={`${styles.align}`}>
-                    <button className={`${styles.button}`} value={1}>1</button>
-                    <button className={`${styles.button}`} value={2}>2</button>
-                    <button className={`${styles.button}`} value={3}>3</button>
-                  </div>
-                  <div className={`${styles.align}`}>
-                    <button className={`${styles.button}`} value={0}>0</button>
-                  </div>
+                    <Calc />
                 </div>
               </div>
           </div>

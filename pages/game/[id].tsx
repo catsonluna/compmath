@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState} from 'react';
 import styles from '@/styles/game.module.css';
 import Heart from '@/pages/components/heart';
+import Calc from '@/pages/components/calc';
 
 export default function Home() {
     const router = useRouter();
@@ -76,24 +77,7 @@ export default function Home() {
                   <div className={`${styles.res}`}>
                     <input type="number" className={`${styles.in}`} placeholder="0"/>
                   </div>
-                  <div className={`${styles.align}`}>
-                    <button className={`${styles.button}`} value={7}>7</button>
-                    <button className={`${styles.button}`} value={8}>8</button>
-                    <button className={`${styles.button}`} value={9}>9</button>
-                  </div>
-                  <div className={`${styles.align}`}>
-                    <button className={`${styles.button}`} value={4}>4</button>
-                    <button className={`${styles.button}`} value={5}>5</button>
-                    <button className={`${styles.button}`} value={6}>6</button>
-                  </div>
-                  <div className={`${styles.align}`}>
-                    <button className={`${styles.button}`} value={1}>1</button>
-                    <button className={`${styles.button}`} value={2}>2</button>
-                    <button className={`${styles.button}`} value={3}>3</button>
-                  </div>
-                  <div className={`${styles.align}`}>
-                    <button className={`${styles.button}`} value={0}>0</button>
-                  </div>
+                    <Calc />
                 </div>
                 <div>
                   <p className={`${styles.titl}`}>Me:</p>
@@ -107,24 +91,7 @@ export default function Home() {
                   <div className={`${styles.res}`}>
                     <input type="number" className={`${styles.inhid}`} placeholder="0"/>
                   </div>
-                  <div className={`${styles.align}`}>
-                    <button className={`${styles.button}`} value={7}>7</button>
-                    <button className={`${styles.button}`} value={8}>8</button>
-                    <button className={`${styles.button}`} value={9}>9</button>
-                  </div>
-                  <div className={`${styles.align}`}>
-                    <button className={`${styles.button}`} value={4}>4</button>
-                    <button className={`${styles.button}`} value={5}>5</button>
-                    <button className={`${styles.button}`} value={6}>6</button>
-                  </div>
-                  <div className={`${styles.align}`}>
-                    <button className={`${styles.button}`} value={1}>1</button>
-                    <button className={`${styles.button}`} value={2}>2</button>
-                    <button className={`${styles.button}`} value={3}>3</button>
-                  </div>
-                  <div className={`${styles.align}`}>
-                    <button className={`${styles.button}`} value={0}>0</button>
-                  </div>
+                    <Calc />
                 </div>
               </div>
           </div>
