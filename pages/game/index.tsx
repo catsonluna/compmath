@@ -37,7 +37,7 @@ const inter = Inter({ subsets: ['latin'] })
               <div className={`${styles.boxing}`}>
                 <div className={`${styles.calc1}`}>{/*calc1*/}
                   <div className={`${styles.res}`}>
-                    <input type="text" className={`${styles.in}`} placeholder="0"/>
+                    <input type="number" className={`${styles.in}`} placeholder="0"/>
                   </div>
                   <div className={`${styles.align}`}>
                     <button className={`${styles.button}`} value={7}>7</button>
