@@ -12,7 +12,8 @@ export default function Home() {
     const [equation, setEquation] = useState<string>('');
     let data: any;
 
-    const [counter, setCounter] = useState(15);
+    const [counter, setCounter] = useState(30);
+    const [inputValue, setInputValue] = useState(''); // Add this line
 
     useEffect(() => {
         if (!loading) return;
@@ -75,9 +76,10 @@ export default function Home() {
               <div className={`${styles.boxing}`}>
                 <div className={`${styles.calc1}`}>{/*calc1*/}
                   <div className={`${styles.res}`}>
-                    <input type="number" className={`${styles.in}`} placeholder="0"/>
+                    <input type="number" value={inputValue} readOnly className={`${styles.in}`} placeholder="0"/>
                   </div>
-                    <Calc />
+                    {/* Pass setInputValue as a prop to Calc */}
+                    <Calc setInputValue={setInputValue} disabled={false}/>
                 </div>
                 <div>
                   <p className={`${styles.titl}`}>Me:</p>
@@ -88,10 +90,10 @@ export default function Home() {
                 <p className={`${styles.titl}`}>Enemy:</p>
                 <Heart num={7} />
                 <div className={`${styles.calc2}`}>{/*calc2*/}
-                  <div className={`${styles.res}`}>
+                <div className={`${styles.res}`}>
                     <input type="number" className={`${styles.inhid}`} placeholder="0"/>
                   </div>
-                    <Calc />
+                    <Calc disabled={true}/>
                 </div>
               </div>
           </div>
