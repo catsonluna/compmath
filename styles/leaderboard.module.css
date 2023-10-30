@@ -40,7 +40,15 @@
 .size{
   display: flex;
   flex-direction: column;
-  width: 35%;
+  width: 60%;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+.leaderboard{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
   gap: 5px;
   align-items: center;
   justify-content: center;
