@@ -11,7 +11,7 @@ export default function Home() {
     const [equation, setEquation] = useState<string>('');
     let data: any;
 
-    const [counter, setCounter] = useState(30);
+    const [counter, setCounter] = useState(15);
 
     useEffect(() => {
         if (!loading) return;
@@ -74,7 +74,7 @@ export default function Home() {
               <div className={`${styles.boxing}`}>
                 <div className={`${styles.calc1}`}>{/*calc1*/}
                   <div className={`${styles.res}`}>
-                    <input type="text" className={`${styles.in}`} placeholder="0"/>
+                    <input type="number" className={`${styles.in}`} placeholder="0"/>
                   </div>
                   <div className={`${styles.align}`}>
                     <button className={`${styles.button}`} value={7}>7</button>
@@ -105,7 +105,7 @@ export default function Home() {
                 <Heart num={7} />
                 <div className={`${styles.calc2}`}>{/*calc2*/}
                   <div className={`${styles.res}`}>
-                    <input type="text" className={`${styles.inhid}`} placeholder="0"/>
+                    <input type="number" className={`${styles.inhid}`} placeholder="0"/>
                   </div>
                   <div className={`${styles.align}`}>
                     <button className={`${styles.button}`} value={7}>7</button>

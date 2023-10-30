@@ -8,8 +8,8 @@ export default async function handler(
   const { email, password } = req.body;
 
   connection.query(
-    'SELECT * FROM users WHERE email = ? AND password = ?',
-    [email, password],
+    'SELECT * FROM users WHERE email = ? or username = ?',
+    [email, email],
     function (error, results, fields) {
       if (error) return res.status(500).json({ error });
       //@ts-expect-error

@@ -7,9 +7,12 @@ import Header from '@/pages/components/header'
 import styles from 'styles/profile.module.css'
 import { useRouter } from 'next/router';
 // font
+import { logout } from '../components/profile';
+
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Profile(){
+    const router=useRouter()
         return (
             <div className={styles.profile}>
                 <div className={`${styles.fixed}`}>
@@ -23,8 +26,13 @@ export default function Profile(){
                             <p>Match History: Wins: 10 / Losses: 5</p>
                         </div>
                         <div className={styles['profile-buttons']}>
-                            <button className={styles['profile-button']}>Settings</button>
-                            <button className={styles['profile-button']}>Sign Out</button>
+                            <button onClick={() => {
+                                router.push('/settings')
+                            }}className={styles['profile-button']}>Settings</button>
+                            <button className={styles['profile-button']} onClick={() => {
+                                logout();
+                                router.push('/login')
+                            }}>Sign Out</button>
                         </div>
                     </div>
                 </div>

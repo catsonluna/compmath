@@ -112,6 +112,9 @@
     justify-content: center;
     align-items: center;
 }
+.nah{
+    display: block;
+}
 @media only screen and (max-width: 767px){
     .main{
         width: 80%;
@@ -128,5 +131,8 @@
     }
     .p{
         width: 90%;
+    }
+    .nah{
+        display: none;
     }
 }
