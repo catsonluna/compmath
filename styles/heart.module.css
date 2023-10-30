@@ -3,3 +3,8 @@
     flex-direction: column;
     gap: 18px;
   }
+  @media only screen and (max-width: 767px){
+    .col{
+      flex-direction: row;
+    }
+  }
