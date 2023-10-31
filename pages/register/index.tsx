@@ -8,6 +8,7 @@ import styles from 'styles/login.module.css'
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import { setCookie } from 'cookies-next';
+import { Customalert } from'@/pages/components/alert';
 // font
 const inter = Inter({ subsets: ['latin'] })
 
@@ -45,7 +46,8 @@ export default function Home() {
                         setCookie("session_token",res.data.session_secret)
                         // redirect to main page
                         router.push("/")
-                      }).catch((err)=>{console.log(err.response.data)}
+                      }).catch((err)=>{console.log(err.response.data)
+                        Customalert(err.response.data.error)}
                       )
                     }
                   }>
