@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useEffect, useState} from 'react';
+import { useEffect, useState, useRef } from 'react'; // Import useRef
 import styles from '@/styles/game.module.css';
 import Heart from '@/pages/components/heart';
 import Calc from '@/pages/components/calc';
@@ -14,6 +14,8 @@ export default function Home() {
 
     const [counter, setCounter] = useState(30);
     const [inputValue, setInputValue] = useState(''); // Add this line
+    const inputRef1 = useRef(null); // Create a ref for the first input field
+    const inputRef2 = useRef(null); // Create a ref for the second input field
 
     useEffect(() => {
         if (!loading) return;
@@ -49,6 +51,19 @@ export default function Home() {
         };
     }, [ws]);
 
+    useEffect(() => {
+        // Focus the input field once the component has mounted
+        if (inputRef1.current) {
+          inputRef1.current.focus();
+        //   console.log(inputRef1.current);
+        }
+      }, []);
+    
+      const handleChange = (event) => {
+        // Update inputValue when the user types into the input field
+        setInputValue(event.target.value);
+      }
+
     if (ws === undefined) {
         return <></>;
     }
@@ -76,11 +91,14 @@ export default function Home() {
               <div className={`${styles.boxing}`}>
                 <div className={`${styles.calc1}`}>{/*calc1*/}
                   <div className={`${styles.res}`}>
-                    <input type="number" value={inputValue} readOnly className={`${styles.in}`} placeholder="0"/>
+                    {/* Add ref to the first input field */}
+                    <input type="number" value={inputValue} className={`${styles.in}`} onChange={handleChange} placeholder="0" ref={inputRef1}/>
                   </div>
                     {/* Pass setInputValue as a prop to Calc */}
-                    <Calc setInputValue={setInputValue} disabled={false}/>
+                    <Calc inputValue={inputValue} setInputValue={setInputValue} disabled={false}/>
                 </div>
+
+
                 <div>
                   <p className={`${styles.titl}`}>Me:</p>
                   <Heart num={7} />
@@ -90,13 +108,15 @@ export default function Home() {
                 <p className={`${styles.titl}`}>Enemy:</p>
                 <Heart num={7} />
                 <div className={`${styles.calc2}`}>{/*calc2*/}
-                <div className={`${styles.res}`}>
-                    <input type="number" className={`${styles.inhid}`} placeholder="0"/>
+                  <div className={`${styles.res}`}>
+                    {/* Add ref to the input field */}
+                    <input type="number" className={`${styles.inhid}`} placeholder="0" ref={inputRef2}/>
                   </div>
-                    <Calc disabled={true}/>
+                    {/* Pass setInputValue as a prop to Calc */}
+                    <Calc setInputValue={setInputValue} disabled={true}/>
+                    </div>
                 </div>
-              </div>
-          </div>
+            </div>
         </div>
     </div>
   );
