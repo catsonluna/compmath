@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react'; // Import useRef
 import Head from 'next/head';
 import Image from 'next/image';
 import { Inter } from 'next/font/google';
@@ -13,12 +13,25 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   const [equation, setEquation] = useState('');
   const [inputValue, setInputValue] = useState(''); // Add this line
+  const inputRef = useRef(null); // Create a ref
 
   useEffect(() => {
     // Generate an equation when the component mounts
     const newEquation = generateEquation(1); // Replace 1 with the desired level
     setEquation(newEquation.equationString);
   }, []);
+
+  useEffect(() => {
+    // Focus the input field once the component has mounted
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
+
+  const handleChange = (event) => {
+    // Update inputValue when the user types into the input field
+    setInputValue(event.target.value);
+  }
 
   return (
     <>
@@ -39,10 +52,11 @@ export default function Home() {
               <div className={`${styles.boxing}`}>
                 <div className={`${styles.calc1}`}>{/*calc1*/}
                   <div className={`${styles.res}`}>
-                    <input type="text" className={`${styles.res}`} value={inputValue} readOnly />
+                    {/* Add ref to the input field */}
+                    <input type="number" className={`${styles.res}`} value={inputValue} onChange={handleChange} placeholder="0" ref={inputRef} />
                   </div>
                     {/* Pass setInputValue as a prop to Calc */}
-                    <Calc setInputValue={setInputValue} />
+                    <Calc inputValue={inputValue} setInputValue={setInputValue} />
                 </div>
               </div>
           </div>

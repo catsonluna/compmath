@@ -64,17 +64,19 @@
     background: none;
     border: none;
     color: black;
+    font-weight: bold;
+    font-size: large;
 }
 .boxing{
     display: flex;
     flex-direction: row;
-    width: 15%;
+    width: 20%;
     height: 50%;
 }
 .boxing1{
     display: flex;
     flex-direction: row;
-    width: 15%;
+    width: 20%;
     height: 50%;
 }
 .res{

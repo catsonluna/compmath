@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from '@/styles/game.module.css';
 
-function Calc({ setInputValue, disabled }) { // Add this line
+function Calc({ inputValue, setInputValue, disabled }) { // Add inputValue prop here
   const handleClick = (event) => {
     // Append the new value to the existing inputValue
-    setInputValue(inputValue => inputValue + event.target.value);
+    setInputValue(inputValue + event.target.value);
   }
   return (
     <>
@@ -26,8 +26,6 @@ function Calc({ setInputValue, disabled }) { // Add this line
         <div className={`${styles.align}`}>
             <button className={`${styles.button}`} value={0} onClick={handleClick} disabled={disabled}>0</button>
         </div>
-
-        {/* Display the input field */}
     </>
   );
 }
