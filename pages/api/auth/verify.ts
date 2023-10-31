@@ -9,11 +9,11 @@ export default async function handler(
 ) {
   const { auth_token } = req.headers;
 
-  const sessionHash = createHash('sha256').update(session_token as string).digest('hex');
+  const authHash = createHash('sha256').update(auth_token as string).digest('hex');
 
     connection.query(
         'SELECT * FROM sessions WHERE hash = ?',
-        [sessionHash],
+        [authHash],
         function (error, results, fields) {
             if (error) return res.status(500).json({ error });
             //@ts-expect-error
