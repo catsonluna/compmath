@@ -5,6 +5,5 @@ export const connection = mysql.createConnection({
     user: "compmath_admin",
     password: "comp_password",
     database: "compmath",
-    port: 3306,
-    debug: true
+    port: 3306
 })
