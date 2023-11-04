@@ -1,4 +1,5 @@
 // Next.js API maršruta atbalsts: https://nextjs.org/docs/api-routes/introduction
+import { register } from 'module'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { connection } from '@/lib/database';
 
@@ -13,7 +14,7 @@ export default function handler(
     // Veic datu bāzes vaicājumu, lai iegūtu 10 labākos spēlētājus pēc ELO vērtējuma.
     connection.query(
         `
-        SELECT username, elo FROM users ORDER BY elo DESC LIMIT 10;
+        SELECT username, elo FROM users ORDER BY elo desc LIMIT 10;
         `,
         function (error, results, fields) {
             if (error) return res.status(500).json({ error });

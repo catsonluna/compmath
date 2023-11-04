@@ -3,10 +3,11 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Header from '@/pages/components/header';
 import Display from '../components/leaderboard';
+//stils
 import styles from '@/styles/leaderboard.module.css'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
+//fonts
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {

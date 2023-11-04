@@ -12,8 +12,8 @@ import axios from 'axios';
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Profile() {
-    const router = useRouter()
-    const { username } = router.query as { username: string }
+    const router=useRouter()
+    const {username} = router.query as {username:string}
     const [profile, setProfile] = React.useState(null as any)
 
     useEffect(() => {
