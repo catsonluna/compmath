@@ -14,9 +14,9 @@ export default async function handler(
     connection.query(
         'SELECT * FROM sessions WHERE hash = ?',
         [authHash],
+        //@ts-expect-error
         function (error, results, fields) {
             if (error) return res.status(500).json({ error });
-            //@ts-expect-error
             if (results.length > 0) {
 
                 // get the user's elo
@@ -26,9 +26,9 @@ export default async function handler(
                 connection.query(
                     'SELECT elo FROM users WHERE user_id = ?',
                     [user_id],
+                    //@ts-expect-error
                     function (error, results, fields) {
                         if (error) return res.status(500).json({ error });
-                        //@ts-expect-error
                         if (results.length > 0) {
                             // Authentication successful
                             const user = results[0];

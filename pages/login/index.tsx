@@ -35,6 +35,7 @@ export default function Home() {
                         password:password
                         }).then((res)=>{
                         console.log(res.data)
+                        setCookie("token",res.data.session_secret)
                         router.push("/")
                         }).catch((err)=>{console.log(err.response.data)
                         Customalert(err.response.data.error)}

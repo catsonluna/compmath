@@ -16,14 +16,18 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Profile(){
     const router=useRouter()
+    const {username} = router.query as {username:string}
     const [profile, setProfile] = React.useState(null as any)
     useEffect(() => {
         if (!getCookie('token')) {
             router.push('/login')
             return
         }
+        if (!username) {
+            return
+        }
 
-        axios.get('/api/profile/me', {
+        axios.get('/api/profile/' + username, {
             headers: {
                 "auth_token": getCookie('token')
             }
@@ -31,7 +35,7 @@ export default function Profile(){
             console.log(res.data.user)
             setProfile(res.data.user)
         })
-    }, [])
+    }, [username])
     if(!profile){
         return <></>
     }
