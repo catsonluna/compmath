@@ -3,7 +3,7 @@ import style from '@/styles/leaderboard.module.css';
 import axios from 'axios';
 
 function Display() {
-    // Initialize the 'leaderboard' state variable with some initial player data.
+    // Inicializē "leaderboard" stāvokļa mainīgo ar sākotnējiem spēlētāju datiem.
     const [leaderboard, setLeaderboard] = useState([
         {
             username: "raivo",
@@ -11,16 +11,16 @@ function Display() {
         }
     ]);
 
-    // Use the 'useEffect' hook to fetch data from an API when the component mounts.
+    // Izmanto "useEffect" kārtojumu, lai iegūtu datus no API, kad komponents tiek ielādēts.
     useEffect(() => {
         axios.get("/api/leaderboard").then((res) => {
-            console.log(res.data); // Log the API response data.
-            // Update the 'leaderboard' state with the fetched data.
+            console.log(res.data); // Reģistrē API atbildes datus konsolē.
+            // Atjauno "leaderboard" stāvokli ar iegūtajiem datiem.
             setLeaderboard(res.data.results);
         });
-    }, []); // The empty array [] means this effect runs only once when the component mounts.
+    }, []); // Tukšs masīvs "[]" nozīmē, ka šis kārtojums tiks izpildīts tikai vienreiz, kad komponents tiek ielādēts.
 
-    // Function to add a suffix to numbers (1st, 2nd, 3rd, 4th, ...).
+    // Funkcija, kas pievieno sufiksu skaitļiem (1st, 2nd, 3rd, 4th, ...).
     const ordinalSuffix = (i) => {
         let j = i % 10;
         let k = i % 100;
@@ -40,11 +40,11 @@ function Display() {
         <div className={style.leaderboard}>
             <h2>Top Ten Players</h2>
 
-            {/* Map through the 'leaderboard' array and display player information. */}
+            {/* Kartē cauri "leaderboard" masīvam un attēlo spēlētāju informāciju. */}
             {leaderboard.map((player, index) => {
                 let className;
 
-                // Determine the CSS class for styling based on the player's rank.
+                // Nosaka CSS klasi stila pielietošanai, pamatojoties uz spēlētāja rangu.
                 if (index === 0) {
                     className = style.first;
                 } else if (index === 1) {
