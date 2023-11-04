@@ -82,7 +82,7 @@ export default function Home() {
             </div>
             <div className={`${styles.main}`}>{/*main*/}
                 <div id="time" className={`${styles.time}`}>{/*time*/}
-                    <p className={`${styles.timer}`}>{counter} sec</p>
+                    <p className={`${styles.timer}`}>{counter.toString()} sec</p>
                 </div>
                 <div className={`${styles.eq}`}>{/*equations*/}
                     <h1>{equation}</h1>
