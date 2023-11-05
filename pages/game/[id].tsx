@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useEffect, useState, useRef } from 'react'; // Import useRef
+import { useEffect, useState, useRef } from 'react';
 import styles from '@/styles/game.module.css';
 import Heart from '@/pages/components/heart';
 import Calc from '@/pages/components/calc';
@@ -15,6 +15,8 @@ export default function Home() {
     const [ready, setReady] = useState<boolean>(false);
 
     const [counter, setCounter] = useState(30);
+
+    const [restartKey, setRestartKey] = useState(0); // Add this line
     const [inputValue, setInputValue] = useState(''); // Add this line
     const inputRef1 = useRef(null); // Create a ref for the first input field
     const inputRef2 = useRef(null); // Create a ref for the second input field
@@ -42,17 +44,19 @@ export default function Home() {
             }));
             setLoading(false);
             const timer = setInterval(() => {
-                setCounter((currentCounter) => currentCounter > 0 ? currentCounter - 1 : 0);
-                if(counter === 0){
-                  ws.send(JSON.stringify({
-                    type: 'answer',
-                    answer: inputValue,
-                    gameId: id,
-                    sessionToken: getCookie('token')
-                  }));
-                  setLocalEnabled(false);
-                  setInputValue('')
-                }
+                setCounter((currentCounter) => {
+                    if (currentCounter > 0) {
+                        return currentCounter - 1;
+                    } else {
+                        // When the countdown hits 0, increment restartKey to force a remount
+                        setRestartKey(prevKey => prevKey + 1);
+                        // Reset the counter to 30 seconds after 10 seconds
+                        setTimeout(() => {
+                            setCounter(30);
+                        }, 10000);
+                        return 0;
+                    }
+                });
             }, 1000);
             return () => clearInterval(timer);
         };
@@ -99,15 +103,12 @@ export default function Home() {
     }, [ws]);
 
     useEffect(() => {
-        // Focus the input field once the component has mounted
         if (inputRef1.current) {
           inputRef1.current.focus();
-        //   console.log(inputRef1.current);
         }
       }, []);
     
       const handleChange = (event) => {
-        // Update inputValue when the user types into the input field
         setInputValue(event.target.value);
       }
 
@@ -129,7 +130,7 @@ export default function Home() {
         <div className={`${styles.main}`}>
             <div>
             </div>
-            <div className={`${styles.main}`}>{/*main*/}
+              <div className={`${styles.main}`} key={restartKey}>{/*main*/}
                 <div id="time" className={`${styles.time}`}>{/*time*/}
                     <p className={`${styles.timer}`}>{counter.toString()} sec</p>
                 </div>
@@ -184,5 +185,6 @@ export default function Home() {
             </div>
         </div>
     </div>
+    </>
   );
 }
