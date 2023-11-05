@@ -7,18 +7,26 @@ import Header from '@/pages/components/header';
 import styles from '@/styles/gam.module.css';
 import { generateEquation } from '@/websocket-server/gen';
 import Calc from '@/pages/components/calc';
+import { getCookie } from 'cookies-next';
+import { useRouter } from 'next/router';
 // font
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [equation, setEquation] = useState('');
+  const [answer, setAnswer] = useState('');
   const [inputValue, setInputValue] = useState(''); // Add this line
   const inputRef = useRef(null); // Create a ref
-
+  const router = useRouter()
   useEffect(() => {
+    if(getCookie('token') == null){
+      router.push('/login')
+      return
+    }
     // Generate an equation when the component mounts
     const newEquation = generateEquation(1); // Replace 1 with the desired level
     setEquation(newEquation.equationString);
+    setAnswer(newEquation.result);
   }, []);
 
   useEffect(() => {
@@ -53,7 +61,20 @@ export default function Home() {
                 <div className={`${styles.calc1}`}>{/*calc1*/}
                   <div className={`${styles.res}`}>
                     {/* Add ref to the input field */}
-                    <input type="number" className={`${styles.res}`} value={inputValue} onChange={handleChange} placeholder="0" ref={inputRef} />
+                    <input type="number" className={`${styles.res}`} value={inputValue} onChange={handleChange} placeholder="0" ref={inputRef} 
+                    onKeyDown={(event) => {
+                      if(event.key === 'Enter'){
+                        if(inputValue == answer){
+                          const newEquation = generateEquation(1); // Replace 1 with the desired level
+                          setEquation(newEquation.equationString);
+                          setAnswer(newEquation.result);
+                        }else{
+                          alert('wrong answer')
+                        }
+                        setInputValue('')
+                      }
+                    }}
+                    />
                   </div>
                     {/* Pass setInputValue as a prop to Calc */}
                     <Calc inputValue={inputValue} setInputValue={setInputValue} />

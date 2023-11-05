@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import axios from 'axios';
 import { setCookie } from 'cookies-next';
+import { Customalert } from'@/pages/components/alert';
 // font
 const inter = Inter({ subsets: ['latin'] })
 
@@ -34,8 +35,10 @@ export default function Home() {
                         password:password
                         }).then((res)=>{
                         console.log(res.data)
+                        setCookie("token",res.data.session_secret)
                         router.push("/")
-                        }).catch((err)=>{console.log(err.response.data)}
+                        }).catch((err)=>{console.log(err.response.data)
+                        Customalert(err.response.data.error)}
                         )
                   }}>
                       <input type="text" placeholder="E-mail" name="email" required onChange={(e)=>setEmail(e.target.value)}value={email}/>

@@ -21,8 +21,6 @@ export default async function handler(
             "SELECT * FROM users WHERE username = ?",
             [username],
             function (error, results, fields) {
-                if (error) return res.status(500).json({ error });
-                //@ts-expect-error
                 if (results.length > 0) {
                     return res.status(400).json({ error: "username_taken" });
                 }

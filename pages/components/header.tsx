@@ -21,8 +21,8 @@ function Header() {
           <nav>
             <ul className={style.list}>
               <li><a className={`${style.res}`} href="/">Home</a></li>
-              <li><a className={`${style.res}`} href="/profile">profile</a></li>
-              <li><a className={`${style.res}`} href="/leaderboard">leaderboard</a></li>
+              <li><a className={`${style.res}`} href="/profile">Profile</a></li>
+              <li><a className={`${style.res}`} href="/leaderboard">Leaderboard</a></li>
               <li><a className={`${style.res}`} href="/game">Play a match</a></li>
             </ul>
           </nav>
