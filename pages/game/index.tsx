@@ -61,7 +61,20 @@ export default function Home() {
                 <div className={`${styles.calc1}`}>{/*calc1*/}
                   <div className={`${styles.res}`}>
                     {/* Add ref to the input field */}
-                    <input type="number" className={`${styles.res}`} value={inputValue} onChange={handleChange} placeholder="0" ref={inputRef} />
+                    <input type="number" className={`${styles.res}`} value={inputValue} onChange={handleChange} placeholder="0" ref={inputRef} 
+                    onKeyDown={(event) => {
+                      if(event.key === 'Enter'){
+                        if(inputValue == answer){
+                          const newEquation = generateEquation(1); // Replace 1 with the desired level
+                          setEquation(newEquation.equationString);
+                          setAnswer(newEquation.result);
+                        }else{
+                          alert('wrong answer')
+                        }
+                        setInputValue('')
+                      }
+                    }}
+                    />
                   </div>
                     {/* Pass setInputValue as a prop to Calc */}
                     <Calc inputValue={inputValue} setInputValue={setInputValue} />
