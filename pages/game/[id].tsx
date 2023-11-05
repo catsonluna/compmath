@@ -118,11 +118,9 @@ export default function Home() {
 
     if(!ready){
       return<>
-        <h1 style={{
-          textAlign: 'center',
-          marginTop: '50vh',
-          transform: 'translateY(-50%)'
-        }}>Waiting for other player...</h1>
+        <div className={`${styles.mainq}`}>
+          <h1 className={`${styles.queue}`}>Waiting for other player...</h1>
+        </div>
       </>
     }
 
