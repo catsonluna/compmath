@@ -118,19 +118,10 @@
 .time {
     position: relative;
     overflow: hidden;
+    align-items: center;
+    justify-content: center;
     width: 60%;
     background-color: red;
-  }
-  
-  .time::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 0;
-    background: white;
-    animation: cover 30.1s linear forwards;
   }
   
   @keyframes cover {
@@ -139,7 +130,7 @@
     }
   }
   .timer {
-    color: black;
+    color: white;
     position: relative;
     z-index: 1;
   }
