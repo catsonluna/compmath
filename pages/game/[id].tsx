@@ -127,9 +127,7 @@ export default function Home() {
     }
 
     return (
-        <div className={`${styles.main}`}>
-            <div>
-            </div>
+      <>
               <div className={`${styles.main}`} key={restartKey}>{/*main*/}
                 <div id="time" className={`${styles.time}`}>{/*time*/}
                     <p className={`${styles.timer}`}>{counter.toString()} sec</p>
@@ -184,7 +182,6 @@ export default function Home() {
                 </div>
             </div>
         </div>
-    </div>
     </>
   );
 }
