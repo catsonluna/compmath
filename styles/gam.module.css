@@ -68,6 +68,13 @@
     height: 70%;
     margin-top: 100px;
 }
+.queue{
+    background: none;
+    border: none;
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+}
 .res{
     display: flex;
     background-color: white;

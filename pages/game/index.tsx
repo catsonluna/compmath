@@ -9,6 +9,7 @@ import { generateEquation } from '@/websocket-server/gen';
 import Calc from '@/pages/components/calc';
 import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/router';
+import { generateSecret } from "@/lib/utils"
 // font
 const inter = Inter({ subsets: ['latin'] })
 
@@ -55,6 +56,11 @@ export default function Home() {
           <div>
             <h1 className={`${styles.nah}`}>Lobby</h1>
           </div>
+          <button className={`${styles.queue}`} style={{
+          }} onClick={()=> {
+            const code = generateSecret(8)
+            router.push(`/game/${code}`)
+          }}>Create A Game</button>
           <div className={`${styles.cen}`}>
             <p className={`${styles.p}`}>{equation}</p>
               <div className={`${styles.boxing}`}>
