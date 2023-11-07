@@ -75,6 +75,13 @@
     font-weight: bold;
     font-size: large;
 }
+.button1{
+    background: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+}
 .boxing{
     display: flex;
     flex-direction: row;

@@ -25,12 +25,12 @@ export default function Home() {
     const [localColour, setLocalColour] = useState('white');
     const [enemyColour, setEnemyColour] = useState('white');
     const [localEnabled, setLocalEnabled] = useState(true);
-
+    const [gameover, setGameover] = useState(false);
 
     useEffect(() => {
         if (!loading) return;
         if (id === undefined) return;
-        setWs(new WebSocket('ws://localhost:8080'));
+        setWs(new WebSocket('ws://49.13.48.240:8080'));
     }, [loading, id]);
 
     useEffect(() => {
@@ -48,9 +48,6 @@ export default function Home() {
                     if (currentCounter > 0) {
                         return currentCounter - 1;
                     } else {
-                        // When the countdown hits 0, increment restartKey to force a remount
-                        setRestartKey(prevKey => prevKey + 1);
-                        // Reset the counter to 30 seconds after 10 seconds
                         setTimeout(() => {
                             setCounter(30);
                         }, 10000);
@@ -76,15 +73,17 @@ export default function Home() {
                 if(data.correct){
                   setLocalColour('green');
                 }else{
-                  setLocalColour('red');
                   setLocalLives(localLives - 1);
+                  setLocalColour('red');
+                  console.log(localLives);
                 }
             }else{
               if(data.correct){
                 setEnemyColour('green');
               }else{
-                setEnemyColour('red');
                 setEnemyLives(enemyLives - 1);
+                setEnemyColour('red');
+                console.log(enemyLives);
               }
             }
           }
@@ -94,6 +93,9 @@ export default function Home() {
             setLocalEnabled(true);
             setCounter(30);
             setEquation(data.equation);
+          }
+          if(data.type === "gameover"){
+            setGameover(true);
           }
         };
         ws.onclose = () => {
@@ -120,6 +122,22 @@ export default function Home() {
       return<>
         <div className={`${styles.mainq}`}>
           <h1 className={`${styles.queue}`}>Waiting for other player...</h1>
+          <button className={`${styles.button1}`} onClick={() => {
+            navigator.clipboard.writeText(window.location.href);
+          }}>Copy Link</button>
+        </div>
+      </>
+    }
+
+    if(gameover){
+      return<>
+        <div className={`${styles.mainq}`}>
+          </div>  
+          <div className={`${styles.mainq}`}>
+          <h1 className={`${styles.queue}`}>Game Over</h1>
+          <button className={`${styles.button1}`} onClick={() => {
+            router.push('/');
+          }}>Return to Home</button>
         </div>
       </>
     }
@@ -141,7 +159,7 @@ export default function Home() {
                     }}>
                     {/* Add ref to the first input field */}
                     <input type="number" value={inputValue} className={`${styles.in}`} onChange={handleChange} placeholder="0" ref={inputRef1} onKeyDown={(event) => {
-                      if(event.key === 'Enter'){
+                      if(event.key === 'Enter' || counter === 0){
                         ws.send(JSON.stringify({
                           type: 'answer',
                           answer: inputValue,
