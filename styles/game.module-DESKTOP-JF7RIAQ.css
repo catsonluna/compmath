@@ -1,0 +1,202 @@
+.main{
+    display: flex;
+    min-height: 97vh;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+.mainq{
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.fixed{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+  }
+.eq{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    background-color: white;
+    color: black;
+    height: 40%;
+}
+.calcs{
+    display: flex;
+    width: 100%;
+    height: 80vh;
+    margin-top: 100px;
+    align-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.calc1{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    background-color: #50CDE9;
+}
+.calc2{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    background-color: #FAE206;
+}
+.align{
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%;
+    height: 30%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.button{
+    background: none;
+    border: none;
+    color: black;
+    font-weight: bold;
+    font-size: large;
+}
+.button1{
+    background: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+}
+.boxing{
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+    height: 50%;
+}
+.boxing1{
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+    height: 50%;
+}
+.res{
+    display: flex;
+    background-color: white;
+    width: 100%;
+    height: 40%;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-weight: bold;
+    font-size: large;
+    text-align: center;
+    border: none;
+}
+.queue{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+.titl{
+    display: none;
+}
+.in{
+    display: flex;
+    background: none;
+    border: none;
+    text-align: center;
+    color: black;
+    width: 70%;
+    font-size: xx-large;
+    font-weight: bold;
+}
+.inhid{
+    display: flex;
+    background: none;
+    visibility: hidden;
+    border: none;
+    text-align: center;
+    color: black;
+    font-size: xx-large;
+    font-weight: bold;
+}
+.time {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    background-color: red;
+  }
+  
+  @keyframes cover {
+    to {
+      width: 100%;
+    }
+  }
+  .timer {
+    color: white;
+    position: relative;
+    z-index: 1;
+  }
+  @media only screen and (max-width: 767px){
+    .calcs{
+        flex-direction: column-reverse;
+        margin-top: 10px;
+        gap: 5px;
+        justify-content: space-evenly;
+    }
+    .boxing{
+        flex-direction: column-reverse;
+        width: 60%;
+        justify-content: flex-start;
+        height: 20%;
+    }
+    .boxing1{
+        flex-direction: column;
+        width: 60%;
+        height: 20%;
+    }
+    .align{
+        display: none;
+    }
+    .calc1{
+        height: 50%;
+        width: 100%;
+    }
+    .calc2{
+        height: 50%;
+        width: 100%;
+    }
+    .res{
+        width: 90%;
+        height: 70%;
+    }
+    .titl{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+    .queue{
+        width: 60%;
+    }
+  }

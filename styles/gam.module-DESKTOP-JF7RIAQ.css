@@ -1,0 +1,150 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    min-height: 97vh;
+    width: 75vw;
+    margin-top: 20px;
+  }
+.fixed{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+.time{
+    width: 60%;
+    background-color: white;
+    color: black;
+}
+.eq{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    background-color: white;
+    color: black;
+    height: 40%;
+}
+.calcs{
+    display: flex;
+    width: 100%;
+    height: 80vh;
+    margin-top: 100px;
+    align-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.calc1{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    background-color: #50CDE9;
+}
+.align{
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%;
+    height: 30%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.button{
+    background: none;
+    border: none;
+    color: black;
+}
+.boxing{
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    height: 70%;
+    margin-top: 100px;
+}
+.queue{
+    background: none;
+    border: none;
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+}
+.res{
+    display: flex;
+    background-color: white;
+    width: 100%;
+    height: 40%;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-weight: bold;
+    font-size: xx-large;
+    text-align: center;
+    border: none;
+}
+.in{
+    display: flex;
+    background: none;
+    border: none;
+    text-align: center;
+    color: black;
+    font-size: xx-large;
+    font-weight: bold;
+}
+.inhid{
+    display: flex;
+    background: none;
+    visibility: hidden;
+    border: none;
+    text-align: center;
+    color: black;
+}
+.cen{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: black;
+    width: 100%;
+    height: 100%;
+}
+.p{
+    display: flex;
+    font-weight: bold;
+    font-size: xx-large;
+    background-color: white;
+    width: 60%;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
+}
+.nah{
+    display: block;
+}
+@media only screen and (max-width: 767px){
+    .main{
+        width: 80%;
+    }
+    .cen{
+        margin-top: 100px;
+    }
+    .boxing{
+        width: 80%;
+        height: 60%;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+    }
+    .p{
+        width: 90%;
+    }
+    .nah{
+        display: none;
+    }
+}
